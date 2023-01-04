@@ -1,6 +1,6 @@
 # Food Order App
 
-This project was created using JS and React.
+This project was created using React.
 
 ## Features
 The application allows you to choose dishes from the menu and add them to the cart. You can manipulate the number of dishes in the cart. The total amount changes dynamically.
