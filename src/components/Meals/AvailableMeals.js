@@ -7,12 +7,18 @@ const AvailableMeals = (props) => {
 
   const [meals, setMeals] = useState([]);
   const [isLoading, setIsLoading] = useState(true)
+  const [isError, setIsError] = useState()
 
   const url = 'https://react-http-ff2de-default-rtdb.europe-west1.firebasedatabase.app/availableMeals.json'
 
   useEffect(() => {
     const getMeals = async () => {
       const res = await fetch(url)
+
+      if (!res.ok) {
+        throw new Error(`This is an HTTP error: The status is ${res.status}`)
+      }
+
       const resData = await res.json()
       const loadedMeals = []
 
@@ -27,13 +33,26 @@ const AvailableMeals = (props) => {
       setMeals(loadedMeals)
       setIsLoading(false)
     }
-    getMeals()
+
+      getMeals().catch((err) =>{
+        setIsLoading(false)
+        setIsError(err.message)}
+  )
+    
     }, [])
 
     if (isLoading) {
       return (
         <section className={classes.MealsLoading}>
           <p>Loading...</p>
+        </section>
+      )
+    }
+
+    if (isError) {
+      return (
+        <section className={classes.MealsError}>
+          <p>{isError}</p>
         </section>
       )
     }
