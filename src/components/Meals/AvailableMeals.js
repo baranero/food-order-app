@@ -6,6 +6,7 @@ import MealItem from "./MealItem/MealItem";
 const AvailableMeals = (props) => {
 
   const [meals, setMeals] = useState([]);
+  const [isLoading, setIsLoading] = useState(true)
 
   const url = 'https://react-http-ff2de-default-rtdb.europe-west1.firebasedatabase.app/availableMeals.json'
 
@@ -24,9 +25,18 @@ const AvailableMeals = (props) => {
         })
       }
       setMeals(loadedMeals)
+      setIsLoading(false)
     }
     getMeals()
     }, [])
+
+    if (isLoading) {
+      return (
+        <section className={classes.MealsLoading}>
+          <p>Loading...</p>
+        </section>
+      )
+    }
 
   const mealsList = meals.map(meal =>
     <MealItem
