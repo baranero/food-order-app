@@ -13,6 +13,7 @@
   top: 5vh;
   left: 5%;
   width: 90%;
+  height: max-content;
   background-color: white;
   padding: 1rem;
   border-radius: 14px;
