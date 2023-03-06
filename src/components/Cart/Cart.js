@@ -26,7 +26,7 @@ const Cart = (props) => {
     setIsCheckout(true)
   }
 
-  const url = 'https://react-http-ff2de-default-rtdb.europe-west1.firebasedatabase.app/orders.json'
+  const url = 'https://react-http-ff2de-default-rtdb.europe-west1.firebasedatabase.app/availableMeals.json'
 
   const submitOrderHamdler = async (userData) => {
     setIsSubmitting(true)
