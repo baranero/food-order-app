@@ -9,14 +9,12 @@ const AvailableMeals = (props) => {
   const [isLoading, setIsLoading] = useState(true)
   const [isError, setIsError] = useState()
 
-  const url = 'https://react-http-ff2de-default-rtdb.europe-west1.firebasedatabase.app/availableMeals.json'
-
   useEffect(() => {
     const getMeals = async () => {
-      const res = await fetch(url)
+      const res = await fetch('https://react-http-bc64c-default-rtdb.europe-west1.firebasedatabase.app/availableMeals.json')
 
       if (!res.ok) {
-        throw new Error(`This is an HTTP error: The status is ${res.status}`)
+        throw new Error('Something went wrong!')
       }
 
       const resData = await res.json()
